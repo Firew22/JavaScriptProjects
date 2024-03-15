@@ -70,6 +70,7 @@ const dontDoThis = ((n1 + n2 + n3 + n4) == 50) &&
   //Calculate the total cost of fuel* $150
   totalFCost = MFN*FCPG;
   //Calculate the time it will take for the trip
-  const totalTime =distance/
+  const totalTime =distance/55;
+  
 
 
