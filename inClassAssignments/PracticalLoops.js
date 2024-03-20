@@ -35,7 +35,7 @@ while (true) {
 }
 
 
-/Part 3
+//Part 3
 // Your task is to write a script that accomplishes the following:
 // Loop through the characters of a given CSV string.
 // Store each “cell” of data in a variable.
