@@ -47,6 +47,55 @@ for (let i = 1; i < firstData.length; i++) {
 
 console.log(newData);
 
+// part 3
+
+// 
+// let object = {} 
+// object.id = firstData[1][0]
+// object.name =firstData[1][1]
+// object.occupation =firstData[1][2]
+// object.age =firstData[1][3]
+
+
+// console.log(object)
+// let data = []
+// data.push(object)
+// console.log(data)
+ 
+
+//     for ( let i = 1; i <= data.length; i++ ) {
+//    let object = {}     
+// object.id = firstData[i][0]
+// object.name =firstData[i][1]
+// object.occupation =firstData[i][2]
+// object.age =firstData[i][3]
+// for (let j=0; j<data[0].length; i++) {
+//     console.log(data[0][i])
+// }
+// console.log(object)
+// let data = []
+// data.push(object)
+// console.log(data)
+
+//     }
+
+// for(let i=1;i<firstData.length;i++){
+//     let object ={}
+  
+//     object.id = firstData[i][0]
+//     object.name = firstData[i][1]
+//     object.occupation = firstData[i][2]
+//     object.age = firstData[i][3]
+    
+//   for (let j =0;j<firstData[0].length;j++){
+//     object[data[0][j]] =  firstData[i][j]
+//     // console.log(data[0][j])
+//   }
+  
+//   newData.push(object)
+//   } 
+
+
 //4
 newData.pop();
 newData.splice(1, 0, {
@@ -73,4 +122,9 @@ for (let i = 0; i < newData.length; i++) {
 }
 console.log(total / 5);
 
+<<<<<<< HEAD
 console.log(JSON.stringify(newData));
+=======
+
+console.log(JSON.stringify(newData))
+>>>>>>> 91e4c274ae611ea36f75a7fbbd131c6a3ae178f6
