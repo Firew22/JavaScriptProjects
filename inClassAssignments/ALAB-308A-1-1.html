@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //PART 1
+let counter =0;
+function increment(){
+    counter++
+    increment()
+}
+try{
+    increment();
+}catch(error){
+    console.log("error caught", error )
+    console.log("counter value ", counter)
+}
+//3
+const primeNumbersElement = document.getElementById('primeNumbers');
+
+function isPrime(num, divisor = 2) {
+      if (num <= 1) return false;
+      if (divisor >= num) return true;
+      if (num % divisor === 0) return false;
+      return isPrime(num, divisor + 1);
+    }
+
+    function addPrimeNumbers(n, current = 2, primes = []) {
+      if (current > n) return primes;
+      if (isPrime(current)) {
+        primes.push(current);
+      }
+      return addPrimeNumbers(n, current + 1, primes);
+    }
+
+    function renderPrimeNumbers(primes) {
+      primes.forEach((prime, index) => {
+        setTimeout(() => {
+          primeNumbersElement.innerHTML += `${prime}, `;
+          if (index === primes.length - 1) {
+            alert('Calculation finished!');
+          }
+        }, index * 10); 
+      });
+    }
+
+    const n = 10000;
+    const primeNumbers = addPrimeNumbers(n);
+    renderPrimeNumbers(primeNumbers);
+   
+
+</script>
+    <div id="primNumbers"></div>
+</body>
+</html>
+
+
+
+
+
+
