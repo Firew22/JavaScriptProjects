@@ -1,0 +1,130 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INSTARASH</title>
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container styles */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header styles */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      color: #333;
+    }
+
+    /* Post styles */
+    .post {
+      border: 1px solid #0d0e6e;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .post h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .post p {
+      color: #271f9c;
+    }
+
+    .post ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .post ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Form styles */
+    .comment-form {
+      margin-top: 20px;
+    }
+
+    .comment-form input[type="text"] {
+      width: calc(100% - 100px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .comment-form button {
+      padding: 10px 20px;
+      background-color: #3897f0;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background-color: #3578e5;
+    }
+
+    /* User list styles */
+    .user-list {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .user-list li {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+  </style>
+  <body style="background-color: #010920;">
+    <div class="container" style="background-color: rgb(235, 236, 243); border-radius: 10px;">
+      <h1>INSTARASH</h1>
+
+      <h2>Posts</h2>
+      <% posts.forEach(post => { %>
+      <div class="post" style="border-radius: 10px;">
+        <h3><%= post.title %></h3>
+        <p>Posted by User <%= post.userId %></p>
+        <ul>
+          <% comments.filter(comment => comment.postId ===
+          post.id).forEach(comment => { %>
+          <li><%= comment.body %></li>
+          <% }); %>
+        </ul>
+        <form action="/comments" method="POST">
+          <input type="hidden" name="postId" value="<%= post.id %>" />
+          <input type="text" class="comment-input" name="body" required />
+          <button type="submit" class="comment-btn">Add Comment</button>
+        </form>
+      </div>
+      <% }); %>
+
+      <h2>Users</h2>
+      <ul>
+        <% users.forEach(user => { %>
+        <li><%= user.name %></li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>
