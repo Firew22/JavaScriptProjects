@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 // Setting the directory for  views
 app.set('views', path.join(__dirname, 'views',));
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // route handler for the home page
 app.get('/', (req, res) => {
@@ -54,7 +54,7 @@ const customHeader = (req, res, next) => {
 };
 
 // Middleware
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -121,6 +121,7 @@ app.post('/comments', (req, res) => {
   const newComment = req.body;
   comments.push(newComment);
   res.status(201).json(newComment);
+ 
 });
 
 // DELETE route for deleting a user
@@ -170,6 +171,14 @@ app.delete('/comments/:id', (req, res) => {
     res.status(404).json({ error: 'Comment not found' });
   }
 });
+//Add error handling middleware to the app
+const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal Server Error' });
+};
+
+
+app.use(errorHandler);
 
 // Start the server
 app.listen(port, () => {
