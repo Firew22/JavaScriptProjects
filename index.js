@@ -8,16 +8,16 @@ const port = 3000;
 
 
 
-// Set EJS as the view engine
+// Setting EJS as the view engine
 app.set('view engine', 'ejs');
 
-// Set the directory for your views
+// Setting the directory for  views
 app.set('views', path.join(__dirname, 'views',));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Define route handler for the home page
+// route handler for the home page
 app.get('/', (req, res) => {
-  // Render the index.ejs view and send it as the response
+  // Render the index.ejs view and send it 
   res.render('index',{posts:posts, comments:comments, users:users});
 });
 
@@ -44,13 +44,13 @@ let comments = [
 // Custom middleware to log request details
 const requestLogger = (req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next(); // Call the next middleware in the stack
+  next(); 
 };
 
 // Custom middleware to add a custom header to all responses
 const customHeader = (req, res, next) => {
   res.setHeader('X-Custom-Header', 'Hello from custom middleware!');
-  next(); // Call the next middleware in the stack
+  next(); 
 };
 
 // Middleware
@@ -59,8 +59,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Apply the custom middleware globally
-app.use(requestLogger); // Log request details
-app.use(customHeader); // Add custom header to all responses
+app.use(requestLogger); 
+app.use(customHeader); 
 
 // Route for retrieving users
 app.get('/users', (req, res) => {
@@ -129,7 +129,7 @@ app.delete('/users/:id', (req, res) => {
   const index = users.findIndex(user => user.id === userId);
   if (index !== -1) {
     users.splice(index, 1);
-    res.sendStatus(204); // No content
+    res.sendStatus(204); 
   } else {
     res.status(404).json({ error: 'User not found' });
   }
@@ -165,7 +165,7 @@ app.delete('/comments/:id', (req, res) => {
   const index = comments.findIndex(comment => comment.id === commentId);
   if (index !== -1) {
     comments.splice(index, 1);
-    res.sendStatus(204); // No content
+    res.sendStatus(204); 
   } else {
     res.status(404).json({ error: 'Comment not found' });
   }
